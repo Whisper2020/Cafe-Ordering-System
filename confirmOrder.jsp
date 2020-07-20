@@ -1,7 +1,9 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Statement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %><%--
   Created by IntelliJ IDEA.
   User: qingh
   Date: 2020/7/18
@@ -71,7 +73,7 @@
     <h1 style="margin-top:-10px;;color: dimgray">确认订单</h1>
 
     <br>
-    <form action="#" method="post" id="basket">
+    <form action="" method="post" id="basket">
         <div class="cart-info">
             <table>
 
@@ -87,6 +89,10 @@
                     ResultSet rs;
                     rs = stmt.executeQuery("SELECT count(distinct orderNo) num FROM orders");
                     int orderNO=0;
+                    Date now=new Date();
+                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");//设置日期格式
+                    String date=df.format(now);
+                    request.setAttribute("date",date);
                     while(rs.next())
                         orderNO=rs.getInt("num");
                     request.setAttribute("orderNO",orderNO+1);
@@ -125,6 +131,7 @@
                 %>
 
                 <tr><td colspan="5" align="right" style=" background-color: antiquewhite;font-size: 15px">总计：<%=money%> 元</td></tr>
+                <tr><td colspan="5" align="right" style=" background-color: antiquewhite;font-size: 15px">时间：<%=date%></td></tr>
                 <tr>
                     <td  align="left" style=" background-color: antiquewhite;font-size:15px;">
                         <input align="right" type="button" value="堂食" onclick="in_eat()"/>
@@ -134,22 +141,21 @@
                     </td>
                 </tr>
 
-                <tr><td colspan="15" align="right" style=" background-color: antiquewhite;font-size:15px;"><input value="收件人：(外送必填)"/></td></tr>
-                <tr><td colspan="15" align="right" style=" background-color: antiquewhite;font-size: 15px;"><input value="收件人电话：(外送必填)"/></td></tr>
-                <tr><td colspan="15" align="right" style=" background-color: antiquewhite;font-size: 15px;"><input value="收件地址：(外送必填)"/></td></tr>
-
-
+                <tr><td colspan="15" align="right" style=" background-color: antiquewhite;font-size:15px;">收件人：(外送必填)<input /></td></tr>
+                <tr><td colspan="15" align="right" style=" background-color: antiquewhite;font-size: 15px;">收件人电话：(外送必填)<input value=""/></td></tr>
+                <tr><td colspan="15" align="right" style=" background-color: antiquewhite;font-size: 15px;">收件地址：(外送必填)<input value=""/></td></tr>
 
 
                 </tr>
                 </tbody>
             </table>
         </div>
+        <div class="buttons">
+            <div class="center"><a href="#" class="button" style="height: auto" onclick="confirmOrder(this.form)"><span >确认下单</span></a></div>
+        </div>
     </form>
 
-        <div class="buttons">
-            <div class="center"><a href="#" class="button" style="height: auto" onclick="confirmOrder(document.getElementById(order))"><span >确认下单</span></a></div>
-        </div>
+
 
 </div>
 </form>
