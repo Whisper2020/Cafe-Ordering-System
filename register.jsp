@@ -265,12 +265,6 @@
     </div>
 </div>
 
-<!--<form action="AddUser" method="get">
-    <div style="text-align: center;">用户注册</div>
-    <div style="text-align: center;">___________________________________</div>
-    <div style="text-align: center;">Name:<input type="text" name=userName><br></div>
-    <div style="text-align: center;">Password:<input type="password"  name=password><br></div>
-    <div style="text-align: center;"><input type="submit" value="注册" onclick="return check(this.form)" ></div>
-</form>-->
+
 </body>
 </html>
