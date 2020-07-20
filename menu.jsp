@@ -298,6 +298,7 @@ body {
 					<li><a href="shoppingCart.jsp">Shopping Cart</a></li>
 					<li><a href="#">My Order</a></li>
 					<li><a href="myAccount.jsp">My Account</a></li>
+					<li ><a href="DelCookie" onClick="" >Exit</a></li>
 
 				</ul>
 			</div>
