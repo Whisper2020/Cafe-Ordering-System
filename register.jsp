@@ -176,15 +176,18 @@
 <script type="text/javascript">
 
     function check(form) {
-        var id=document.getElementsByName("identity");
-        if (id[0].checked){
-            form.action="AddOperator";
-            form.submit();
-        }
-        else{
-            form.action="AddUser";
-            form.submit();
-        }
+
+            var id=document.getElementsByName("identity");
+
+            if (id[0].checked){
+                form.action="AddOperator";
+                form.submit();
+            }
+            else{
+                form.action="AddUser";
+                form.submit();
+            }
+
     }
 
 
@@ -234,11 +237,11 @@
             <div class="lgD">
                 <img src="img/logPwd.png" width="20" height="20" alt=""/>
                 <input type="password"
-                       placeholder="输入用户密码" name="password" >
+                       placeholder="密码,由6-12个字符和数字组成" name="password" maxlength="12" minlength="6" id="1"/>
+
             </div>
             <div align="center">
 
-                <input type="radio" name="identity"  >管理员
                 <input type="radio" name="identity" checked="checked">用户
 
                 <br>
